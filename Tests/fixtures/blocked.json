@@ -1,0 +1,1 @@
+{"version":"0.1.0","schema":1,"command":"unlock-once","result":"secure_focus_unverified","exitCode":2,"submitted":false,"recovered":false,"observation":{"ownSession":true,"session":42,"state":"locked","accessibility":true,"eventPosting":true,"displayAwake":true,"targetVerified":false,"emptyField":false,"reason":"secure_focus_unverified"}}

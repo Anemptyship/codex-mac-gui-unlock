@@ -1,0 +1,22 @@
+name: macOS build and safety tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  macos:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - run: brew install gitleaks shellcheck
+      - run: ./scripts/build.sh
+      - run: swift test
+      - run: python3 -m unittest discover -s Tests -v
+      - run: shellcheck scripts/build.sh scripts/mac-gui-unlock scripts/scan.sh
+      - run: ./scripts/scan.sh
