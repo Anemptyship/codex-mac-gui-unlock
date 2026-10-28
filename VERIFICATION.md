@@ -82,3 +82,11 @@ The helper and skill remain installed, but the dedicated password item and all g
 Complete local helper permission approval. GitHub CLI authentication is optional when publication uses the existing connected GitHub API. Establish a harmless TextEdit GUI baseline. Approve one native task-specific grant, run ordinary Control-Command-Q lock, attempt once, and verify both independent same-session unlock and continuation of the exact pending GUI operation. Repeat after an owner-confirmed Chrome Remote Desktop iPhone connect/disconnect. Follow LIVE-TESTS.md and stop after any failure; preserve private receipts locally.
 
 Publish only with this experimental label unless those specific live tests actually pass. GitHub CI build/test results must be recorded separately from physical GUI evidence. No stable release is justified by the present record.
+
+## Follow-up: icon and permission registration investigation
+
+The installed app now includes a faceless pastel open-padlock icon, packaged as ICNS and registered with CFBundleIconFile. This changes the ad-hoc bundle signature; it does not establish new unlock compatibility. The icon master is generated artwork, not a screenshot, and is covered by the reviewed asset manifest.
+
+System Settings was inspected directly and showed this helper's Accessibility switch On while a newly launched helper still reported Accessibility=false and eventPosting=false. This discrepancy was observed, but its cause was not established. Read-only access to protected TCC databases was denied; no protection was bypassed and no database was modified directly. Only Apple's supported app-specific `tccutil reset Accessibility org.codexcommunity.MacGUIUnlock` operation was used to discard this helper's stale registration. Other apps' permissions were left unchanged.
+
+After reinstallation and a new native permission request, Settings showed the current helper entry Off. The owner was asked to approve that specific current entry locally. No new unlock attempt has been made without a fresh local grant and a positive permission check. The earlier failed trial remains the most recent physical recovery result.

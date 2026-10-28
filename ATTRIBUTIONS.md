@@ -1,6 +1,6 @@
 # Research and attributions
 
-No third-party source files, binaries, sprites or assets are included. Original source is MIT. Swift/AppKit, ApplicationServices, Security, SystemConfiguration, IOKit and Darwin are supplied by Apple; Python standard-library scripts add no runtime package dependencies.
+No third-party source files, binaries, sprites or stock assets are included. The original faceless application icon was generated with the built-in image generation tool; its prompt and provenance are in assets/ICON.md. Original source is MIT. Swift/AppKit, ApplicationServices, Security, SystemConfiguration, IOKit and Darwin are supplied by Apple; Python standard-library scripts add no runtime package dependencies.
 
 Inspected source, without building or executing upstream password code:
 

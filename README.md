@@ -1,5 +1,7 @@
 # codex-mac-gui-unlock
 
+<img src="assets/AppIcon.png" alt="Faceless pastel open-padlock application icon" width="128">
+
 **EXPERIMENTAL / GUI UNLOCK UNVERIFIED. No successful physical-Mac unlock is established.**
 
 An on-demand Swift app and Codex skill for investigating recovery of the owner's existing, same-user macOS console session after an ordinary screen lock. This is not an official OpenAI integration. Read [VERIFICATION.md](VERIFICATION.md) for actual observations and [SECURITY.md](SECURITY.md) before enrolling a credential.
@@ -35,6 +37,17 @@ python3 scripts/check-skill.py --codex /path/to/codex
 3. Enrollment stores a dedicated, non-synchronizing login Keychain item with an ACL restricted to the installed app executable. It does not establish a successful unlock. Rebuilding changes an ad-hoc signature and can require new TCC approval and local enrollment.
 
 **Automatic unlocking can expose your desktop to anyone physically present.** This app does not reproduce OpenAI's display shields. A signed app in a user-writable folder is not protection from malicious code already running as that user. See the threat model.
+
+### If Settings says On but the helper reports false
+
+An ad-hoc rebuild can leave a stale approval bound to an older code signature. The Settings switch alone is not evidence that the current process has permission. Revoke and reinstall the final app before enrolling. If the owner chooses to discard this helper's stale approval, use Apple's supported per-app reset, then approve the current app locally:
+
+```sh
+tccutil reset Accessibility org.codexcommunity.MacGUIUnlock
+./scripts/mac-gui-unlock permissions
+```
+
+This revokes only this helper's Accessibility registration. It does not disable TCC, approve new access, or reset ChatGPT, Computer Use, Chrome Remote Desktop, or other apps. The owner must turn the current helper entry on themselves. Confirm `observation.accessibility` and `observation.eventPosting` inside a new app `status` receipt before attempting recovery.
 
 ## One bounded task grant
 

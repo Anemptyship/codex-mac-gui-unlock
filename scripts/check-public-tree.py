@@ -2,6 +2,8 @@
 """Reject common private paths/build products in the source tree without printing values."""
 from pathlib import Path
 import re
+import hashlib
+import json
 import subprocess
 import sys
 
@@ -17,6 +19,12 @@ for entry in result.stdout.split(b"\0"):
         problems.append(relative); continue
     if any(part in {".build", "dist", ".local", "__pycache__"} for part in Path(relative).parts):
         problems.append(relative); continue
+    if relative == "assets/AppIcon.png":
+        reviewed = json.loads((root / "assets/manifest.json").read_text())["AppIcon.png"]
+        data = file.read_bytes()
+        if not data.startswith(b"\x89PNG\r\n\x1a\n") or hashlib.sha256(data).hexdigest() != reviewed["sha256"]:
+            problems.append(relative)
+        continue
     if file.suffix.lower() in {".png", ".jpg", ".log", ".key", ".p12", ".mobileprovision"}:
         problems.append(relative); continue
     try:
